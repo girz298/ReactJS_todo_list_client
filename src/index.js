@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
 import Table from './containers/Table/table.jsx'
 import CreateProjectBlock from './containers/CreateProjectBlock/createProjectBlock.jsx'
 import RefreshProjectsBlock from './containers/RefreshProjectsBlock/refreshProjectsBlock.jsx'
