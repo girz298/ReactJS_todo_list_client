@@ -2,6 +2,7 @@ import React from 'react'
 import * as todoActions from '../../store/todo/actions';
 import * as todoSelectors from '../../store/todo/reducer';
 import { connect } from 'react-redux';
+import './createProjectBlock.css';
 
 class CreateProjectBlock extends React.Component {
 
@@ -16,10 +17,9 @@ class CreateProjectBlock extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="create-project-block">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label htmlFor="projectName">Email address:</label>
             <input type="text" name="projectName" value={this.state.projectName}
               onChange={this.handleChange} className="form-control"
               id="projectName" placeholder="Project Name"></input>
