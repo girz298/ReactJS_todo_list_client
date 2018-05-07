@@ -6,9 +6,7 @@ class RemoveProjectButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
+      isButtonDisabled: false
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,8 +18,13 @@ class RemoveProjectButton extends React.Component {
   }
 
   handleClick() {
-    console.log("Will Remove project with ID: " + this.props.projectId);
-    this.props.dispatch(todoActions.removeProjectByIdAction(this.props.projectId));
+    if (!this.state.isButtonDisabled) {
+      console.log("Will Remove project with ID: " + this.props.projectId);
+      this.props.dispatch(todoActions.removeProjectByIdAction(this.props.projectId));
+      this.setState({
+        isButtonDisabled: true
+      });
+    }
   }
 }
 

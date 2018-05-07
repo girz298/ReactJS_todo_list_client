@@ -13,9 +13,17 @@ const initialState = Immutable({
 export default function reduce(state = initialState, action = {}) {
   switch (action.type) {
     case types.PROJECTS_FETCHED:
+      console.log('in case types.PROJECTS_FETCHED');
+      console.log(action.projectsFromApi);
       return state.merge({
         projectsFromApi: action.projectsFromApi
       });
+    case types.PROJECTS_CREATED:
+      return state.merge({
+        projectsFromApi: state.projectsFromApi.concat([action.project])
+      });
+    case types.PROJECTS_REMOVED:
+      return state.merge({projectsFromApi: state.projectsFromApi.filter((el) => el.id != action.projectId)});
     default:
       return state;
   }

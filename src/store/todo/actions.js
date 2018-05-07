@@ -17,7 +17,6 @@ export function removeProjectByIdAction(projectId) {
     try {
       const isDeleted = await projectService.removeProjectById(projectId);
       if (isDeleted) {
-        dispatch(fetchProjectsAction());
         dispatch({ type: types.PROJECTS_REMOVED, projectId });
       }
     } catch (error) {
@@ -29,9 +28,8 @@ export function removeProjectByIdAction(projectId) {
 export function createProjectAction(projectName) {
   return async(dispatch, getState) => {
     try {
-      const projectsFromApi = await projectService.createProject(projectName);
-      dispatch(fetchProjectsAction());
-      dispatch({ type: types.PROJECTS_CREATED, projectName });
+      const project = await projectService.createProject(projectName);
+      dispatch({ type: types.PROJECTS_CREATED, project });
     } catch (error) {
       console.error(error);
     }
